@@ -54,7 +54,7 @@ Dashboard URL: [https://lolindgr.github.io/mlfs-book/](https://lolindgr.github.i
 
 ## How to Run Locally
 1. Clone the repo
-2. Create a local .env (at the root level of the cloned repository)
+2. Create a local .env (at the root level of the cloned repository), and add HOPSWORKS_API_KEY, AQICN_API_KEY, and their values you created in step 1.
 3. Create a Conda environment and install dependencies: `pip install -r requirements.txt`
 4. Run notebooks 1-4 under `notebooks/airquality`
 
