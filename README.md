@@ -48,7 +48,7 @@ The workflow file located in `.github/workflows/air-quality-daily.yml` runs once
 The notebook `3_air_quality_training_pipeline.ipynb` trains an XGBoost regression model over joined weather + air quality features using a **Feature View**. The model is evaluated using **RMSE**, and registered in the Hopsworks Model Registry. The repository contains no changes to the training logic beyond sensor configuration.
 
 ### 5. Batch Inference & Dashboard
-Teh notebook `4_air_quality_batch_inference.ipynb` loads the latest model and generates the **Forecast plot** (next 7 days), and **Hindcast plot** (actual vs predicted). These plots are exported as PNGs and served via **GitHub Pages** as a simple dashboard.
+The notebook `4_air_quality_batch_inference.ipynb` loads the latest model and generates the **Forecast plot** (next 7 days), and **Hindcast plot** (actual vs predicted). These plots are exported as PNGs and served via **GitHub Pages** as a simple dashboard.
 
 Dashboard URL: [https://lolindgr.github.io/mlfs-book/](https://lolindgr.github.io/mlfs-book/)
 
