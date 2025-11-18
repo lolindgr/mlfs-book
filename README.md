@@ -19,7 +19,7 @@ All notebooks and example code come from the original repository: [https://githu
 
 This fork contains only minimal modifications needed to run the pipelines for our selected sensor.
 
-## API Keys Setup
+### 1. API Keys Setup
 Two APIs are required:
 
 **_Hopsworks API Key_**
@@ -33,5 +33,28 @@ Two APIs are required:
 
 **_GitHub Secrets_**
 <br>
-Add the following secrets under **Settings** $\to$ **Secrets and variables** $\to$ **Actions*:
-- HOPSWORKS_API_KEY
+Add the secret HOPSWORKS_API_KEY under **Settings** $\to$ **Secrets and variables** $\to$ **Actions* (used by GitHub Actions to run the daily pipeline).
+
+### 2. Choose Sensor & Download Histrocial Data
+A sensor from [https://aqicn.org](https://aqicn.org) was selected. Historical PM2.5 data and historical weather data were downloaded manually and loaded in the backfill notebook.
+
+### 3. Daily Feature Pipeline (GitHub Actions)
+The workflow file located in `.github/workflows/air-quality-daily.yml` runs once per day. It performs:
+- Fetch latest PM2.5 value
+- Fetch today's + 7-day weather forecast
+- Updates Feature Groups in Hopsworks
+
+### 4. Training Pipeline
+The notebook `3_air_quality_training_pipeline.ipynb` trains an XGBoost regression model over joined weather + air quality features using a **Feature View**. The model is evaluated using **RMSE**, and registered in the Hopsworks Model Registry. The repository contains no changes to the training logic beyond sensor configuration.
+
+### 5. Batch Inference & Dashboard
+Teh notebook `4_air_quality_batch_inference.ipynb` loads the latest model and generates the **Forecast plot** (next 7 days), and **Hindcast plot** (actual vs predicted). These plots are exported as PNGs and served via **GitHub Pages** as a simple dashboard.
+
+Dashboard URL: [https://lolindgr.github.io/mlfs-book/](https://lolindgr.github.io/mlfs-book/)
+
+## How to Run Locally
+1. Clone the repo
+2. Create a local .env (at the root level of the cloned repository)
+3. Create a Conda environment and install dependencies: `pip install -r requirements.txt`
+4. Run notebooks 1-4 under `notebooks/airquality`
+
