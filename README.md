@@ -33,7 +33,7 @@ Two APIs are required:
 
 **_GitHub Secrets_**
 <br>
-Add the secret HOPSWORKS_API_KEY under **Settings** $\to$ **Secrets and variables** $\to$ **Actions* (used by GitHub Actions to run the daily pipeline).
+Add the secret HOPSWORKS_API_KEY under **Settings** $\to$ **Secrets and variables** $\to$ **Actions** (used by GitHub Actions to run the daily pipeline).
 
 ### 2. Choose Sensor & Download Histrocial Data
 A sensor from [https://aqicn.org](https://aqicn.org) was selected. Historical PM2.5 data and historical weather data were downloaded manually and loaded in the backfill notebook.
