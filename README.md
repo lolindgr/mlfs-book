@@ -24,7 +24,7 @@ Two APIs are required:
 
 **_Hopsworks API Key_**
 1. Log in at [https://app.hopsworks.ai](https://app.hopsworks.ai)
-2. Go to **User** {\to} **API Keys**
+2. Go to **User** $\to$ **API Keys**
 3. Create a new key and save it.
 
 **_AQICN API Key_**
